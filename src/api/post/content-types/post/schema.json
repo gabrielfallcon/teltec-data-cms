@@ -17,21 +17,25 @@
     "slug": {
       "type": "string"
     },
-    "content": {
+    "summary": {
       "type": "text"
     },
-    "cover": {
-      "type": "media",
-      "multiple": true,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
+    "readingTime": {
+      "type": "integer"
     },
-    "published": {
-      "type": "date"
+    "author": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::author.author",
+      "inversedBy": "posts"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "blog",
+        "case",
+        "rich_material "
+      ]
     }
   }
 }
