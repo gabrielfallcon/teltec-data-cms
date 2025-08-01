@@ -418,12 +418,19 @@ export interface ApiPostPost extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    description01: Schema.Attribute.Text;
+    description02: Schema.Attribute.Text;
+    description03: Schema.Attribute.Text;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::post.post'> &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     readingTime: Schema.Attribute.Integer;
     slug: Schema.Attribute.String;
+    subtitle01: Schema.Attribute.String;
+    subtitle02: Schema.Attribute.String;
+    subtitle03: Schema.Attribute.String;
     summary: Schema.Attribute.Text;
     title: Schema.Attribute.String;
     type: Schema.Attribute.Enumeration<['blog', 'case', 'rich_material ']>;

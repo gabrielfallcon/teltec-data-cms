@@ -36,6 +36,34 @@
         "case",
         "rich_material "
       ]
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "subtitle01": {
+      "type": "string"
+    },
+    "description01": {
+      "type": "text"
+    },
+    "subtitle02": {
+      "type": "string"
+    },
+    "description02": {
+      "type": "text"
+    },
+    "subtitle03": {
+      "type": "string"
+    },
+    "description03": {
+      "type": "text"
     }
   }
 }
