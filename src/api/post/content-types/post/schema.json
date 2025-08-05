@@ -50,20 +50,26 @@
     "subtitle01": {
       "type": "string"
     },
-    "description01": {
-      "type": "text"
-    },
     "subtitle02": {
       "type": "string"
-    },
-    "description02": {
-      "type": "text"
     },
     "subtitle03": {
       "type": "string"
     },
+    "description01": {
+      "type": "richtext"
+    },
+    "description02": {
+      "type": "blocks"
+    },
     "description03": {
-      "type": "text"
+      "type": "richtext"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "mappedBy": "posts"
     }
   }
 }
