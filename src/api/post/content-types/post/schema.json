@@ -65,11 +65,11 @@
     "description03": {
       "type": "richtext"
     },
-    "categories": {
+    "topic": {
       "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::category.category",
-      "mappedBy": "posts"
+      "relation": "manyToOne",
+      "target": "api::topic.topic",
+      "inversedBy": "posts"
     }
   }
 }
