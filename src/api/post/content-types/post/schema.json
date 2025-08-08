@@ -37,7 +37,23 @@
         "rich_material "
       ]
     },
+    "topic": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::topic.topic",
+      "inversedBy": "posts"
+    },
     "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "imageMobile": {
       "type": "media",
       "multiple": false,
       "allowedTypes": [
@@ -50,26 +66,20 @@
     "subtitle01": {
       "type": "string"
     },
+    "description01": {
+      "type": "blocks"
+    },
     "subtitle02": {
       "type": "string"
-    },
-    "subtitle03": {
-      "type": "string"
-    },
-    "description01": {
-      "type": "richtext"
     },
     "description02": {
       "type": "blocks"
     },
-    "description03": {
-      "type": "richtext"
+    "subtitle03": {
+      "type": "string"
     },
-    "topic": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::topic.topic",
-      "inversedBy": "posts"
+    "description03": {
+      "type": "blocks"
     }
   }
 }
