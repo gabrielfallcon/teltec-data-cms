@@ -63,23 +63,11 @@
         "audios"
       ]
     },
-    "subtitle01": {
-      "type": "string"
-    },
-    "description01": {
+    "content": {
       "type": "blocks"
     },
-    "subtitle02": {
+    "videoUrl": {
       "type": "string"
-    },
-    "description02": {
-      "type": "blocks"
-    },
-    "subtitle03": {
-      "type": "string"
-    },
-    "description03": {
-      "type": "blocks"
     }
   }
 }
