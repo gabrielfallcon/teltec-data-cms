@@ -68,6 +68,9 @@
     },
     "videoUrl": {
       "type": "string"
+    },
+    "richMaterialUrl": {
+      "type": "string"
     }
   }
 }
