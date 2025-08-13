@@ -34,7 +34,7 @@
       "enum": [
         "blog",
         "case",
-        "rich_material "
+        "rich_material"
       ]
     },
     "topic": {

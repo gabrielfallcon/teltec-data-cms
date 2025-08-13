@@ -461,7 +461,7 @@ export interface ApiPostPost extends Struct.CollectionTypeSchema {
     summary: Schema.Attribute.Text;
     title: Schema.Attribute.String;
     topic: Schema.Attribute.Relation<'manyToOne', 'api::topic.topic'>;
-    type: Schema.Attribute.Enumeration<['blog', 'case', 'rich_material ']>;
+    type: Schema.Attribute.Enumeration<['blog', 'case', 'rich_material']>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
