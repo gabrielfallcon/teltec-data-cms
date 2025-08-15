@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "type_services",
+  "info": {
+    "singularName": "type-service",
+    "pluralName": "type-services",
+    "displayName": "typeService"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "service": {
+      "type": "enumeration",
+      "enum": [
+        "pmg",
+        "cms",
+        "isv"
+      ]
+    },
+    "services": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::service.service",
+      "mappedBy": "type_service"
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "services",
+  "info": {
+    "singularName": "service",
+    "pluralName": "services",
+    "displayName": "service"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "paragraph": {
+      "type": "text"
+    },
+    "description": {
+      "type": "string"
+    },
+    "type_service": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::type-service.type-service",
+      "inversedBy": "services"
+    }
+  }
+}
