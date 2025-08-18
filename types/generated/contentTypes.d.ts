@@ -458,6 +458,7 @@ export interface ApiPostPost extends Struct.CollectionTypeSchema {
     readingTime: Schema.Attribute.Integer;
     richMaterialUrl: Schema.Attribute.String;
     slug: Schema.Attribute.String;
+    slugId: Schema.Attribute.UID;
     summary: Schema.Attribute.Text;
     title: Schema.Attribute.String;
     topic: Schema.Attribute.Relation<'manyToOne', 'api::topic.topic'>;

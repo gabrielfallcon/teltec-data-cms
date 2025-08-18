@@ -71,6 +71,9 @@
     },
     "richMaterialUrl": {
       "type": "string"
+    },
+    "slugId": {
+      "type": "uid"
     }
   }
 }
