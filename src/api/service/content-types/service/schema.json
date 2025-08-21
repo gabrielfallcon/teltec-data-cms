@@ -11,23 +11,31 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "title": {
+    "titulo": {
       "type": "string"
     },
-    "subtitle": {
+    "subtitulo": {
       "type": "string"
     },
-    "paragraph": {
+    "bloco01Titulo": {
+      "type": "string"
+    },
+    "bloco01Descricao": {
       "type": "text"
     },
-    "description": {
+    "listaDeServicoTitulo": {
       "type": "string"
     },
-    "type_service": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::type-service.type-service",
-      "inversedBy": "services"
+    "listaDeServicos": {
+      "type": "json"
+    },
+    "tipoDeServico": {
+      "type": "enumeration",
+      "enum": [
+        "pms",
+        "cms",
+        "isv"
+      ]
     }
   }
 }
