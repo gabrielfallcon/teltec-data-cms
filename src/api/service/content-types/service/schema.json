@@ -11,6 +11,16 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "imageCard": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
     "titulo": {
       "type": "string"
     },

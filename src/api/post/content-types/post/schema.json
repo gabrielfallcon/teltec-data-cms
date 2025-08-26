@@ -14,9 +14,6 @@
     "title": {
       "type": "string"
     },
-    "slug": {
-      "type": "string"
-    },
     "summary": {
       "type": "text"
     },

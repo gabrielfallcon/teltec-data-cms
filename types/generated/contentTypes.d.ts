@@ -457,7 +457,6 @@ export interface ApiPostPost extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     readingTime: Schema.Attribute.Integer;
     richMaterialUrl: Schema.Attribute.String;
-    slug: Schema.Attribute.String;
     slugId: Schema.Attribute.UID;
     summary: Schema.Attribute.Text;
     title: Schema.Attribute.String;
@@ -486,6 +485,7 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    imageCard: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     listaDeServicos: Schema.Attribute.JSON;
     listaDeServicoTitulo: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
