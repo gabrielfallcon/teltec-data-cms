@@ -11,16 +11,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "imageCard": {
-      "type": "media",
-      "multiple": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
     "titulo": {
       "type": "string"
     },
@@ -31,7 +21,7 @@
       "type": "string"
     },
     "bloco01Descricao": {
-      "type": "text"
+      "type": "blocks"
     },
     "listaDeServicoTitulo": {
       "type": "string"
@@ -46,6 +36,24 @@
         "cms",
         "isv"
       ]
+    },
+    "corDeFundo": {
+      "type": "string"
+    },
+    "corEfeitoDoTexto": {
+      "type": "string"
+    },
+    "corDeEfeito": {
+      "type": "string"
+    },
+    "imageCardPath": {
+      "type": "string"
+    },
+    "videoDescription": {
+      "type": "string"
+    },
+    "embedYoutube": {
+      "type": "string"
     }
   }
 }

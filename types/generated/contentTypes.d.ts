@@ -480,12 +480,16 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    bloco01Descricao: Schema.Attribute.Text;
+    bloco01Descricao: Schema.Attribute.Blocks;
     bloco01Titulo: Schema.Attribute.String;
+    corDeEfeito: Schema.Attribute.String;
+    corDeFundo: Schema.Attribute.String;
+    corEfeitoDoTexto: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    imageCard: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    embedYoutube: Schema.Attribute.String;
+    imageCardPath: Schema.Attribute.String;
     listaDeServicos: Schema.Attribute.JSON;
     listaDeServicoTitulo: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -501,6 +505,7 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    videoDescription: Schema.Attribute.String;
   };
 }
 
