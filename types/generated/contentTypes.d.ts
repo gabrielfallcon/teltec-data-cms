@@ -482,6 +482,7 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
   attributes: {
     bloco01Descricao: Schema.Attribute.Blocks;
     bloco01Titulo: Schema.Attribute.String;
+    comoTrabalhamos: Schema.Attribute.Blocks;
     corDeEfeito: Schema.Attribute.String;
     corDeFundo: Schema.Attribute.String;
     corEfeitoDoTexto: Schema.Attribute.String;

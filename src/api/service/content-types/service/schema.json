@@ -54,6 +54,9 @@
     },
     "embedYoutube": {
       "type": "string"
+    },
+    "comoTrabalhamos": {
+      "type": "blocks"
     }
   }
 }
