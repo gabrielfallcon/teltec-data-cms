@@ -431,6 +431,41 @@ export interface ApiHomeHome extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiPartnerDetailPartnerDetail
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'partner_details';
+  info: {
+    displayName: 'partnerDetail';
+    pluralName: 'partner-details';
+    singularName: 'partner-detail';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    bloco01Descricao: Schema.Attribute.Blocks;
+    bloco01Titulo: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::partner-detail.partner-detail'
+    > &
+      Schema.Attribute.Private;
+    nomeDoParceiro: Schema.Attribute.String;
+    nossosServicosDescricao: Schema.Attribute.Blocks;
+    nossosServicosTitulo: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    subtitulo: Schema.Attribute.String;
+    titulo: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPostPost extends Struct.CollectionTypeSchema {
   collectionName: 'posts';
   info: {
@@ -1068,6 +1103,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::author.author': ApiAuthorAuthor;
       'api::home.home': ApiHomeHome;
+      'api::partner-detail.partner-detail': ApiPartnerDetailPartnerDetail;
       'api::post.post': ApiPostPost;
       'api::service.service': ApiServiceService;
       'api::topic.topic': ApiTopicTopic;

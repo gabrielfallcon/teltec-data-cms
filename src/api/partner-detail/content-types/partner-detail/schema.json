@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "partner_details",
+  "info": {
+    "singularName": "partner-detail",
+    "pluralName": "partner-details",
+    "displayName": "partnerDetail"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "titulo": {
+      "type": "string"
+    },
+    "subtitulo": {
+      "type": "string"
+    },
+    "bloco01Titulo": {
+      "type": "string"
+    },
+    "bloco01Descricao": {
+      "type": "blocks"
+    },
+    "nossosServicosTitulo": {
+      "type": "string"
+    },
+    "nossosServicosDescricao": {
+      "type": "blocks"
+    },
+    "nomeDoParceiro": {
+      "type": "string"
+    }
+  }
+}
