@@ -12,14 +12,22 @@
   "pluginOptions": {},
   "attributes": {
     "banners": {
-      "type": "media",
-      "multiple": true,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
+      "type": "json"
+    },
+    "quemSomosTitulo": {
+      "type": "string"
+    },
+    "quemSomosDescricao": {
+      "type": "blocks"
+    },
+    "clientes": {
+      "type": "json"
+    },
+    "nossosServicosTitulo": {
+      "type": "string"
+    },
+    "nossosServicosDescricao": {
+      "type": "blocks"
     }
   }
 }

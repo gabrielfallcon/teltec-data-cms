@@ -414,17 +414,19 @@ export interface ApiHomeHome extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    banners: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    >;
+    banners: Schema.Attribute.JSON;
+    clientes: Schema.Attribute.JSON;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::home.home'> &
       Schema.Attribute.Private;
+    nossosServicosDescricao: Schema.Attribute.Blocks;
+    nossosServicosTitulo: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    quemSomosDescricao: Schema.Attribute.Blocks;
+    quemSomosTitulo: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
