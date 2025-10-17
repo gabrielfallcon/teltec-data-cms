@@ -1,0 +1,55 @@
+{
+  "kind": "collectionType",
+  "collectionName": "content_banner_homes",
+  "info": {
+    "singularName": "content-banner-home",
+    "pluralName": "content-banner-homes",
+    "displayName": "contentBannerHome"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "imageDesktop": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "imageMobile": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "buttonName": {
+      "type": "string"
+    },
+    "buttonPath": {
+      "type": "string"
+    },
+    "textColor": {
+      "type": "string"
+    },
+    "position": {
+      "type": "enumeration",
+      "enum": [
+        "left",
+        "center",
+        "rigth"
+      ]
+    }
+  }
+}

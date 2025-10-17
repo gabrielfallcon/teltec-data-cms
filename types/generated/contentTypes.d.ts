@@ -403,6 +403,45 @@ export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiContentBannerHomeContentBannerHome
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'content_banner_homes';
+  info: {
+    displayName: 'contentBannerHome';
+    pluralName: 'content-banner-homes';
+    singularName: 'content-banner-home';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    buttonName: Schema.Attribute.String;
+    buttonPath: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    imageDesktop: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    imageMobile: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::content-banner-home.content-banner-home'
+    > &
+      Schema.Attribute.Private;
+    position: Schema.Attribute.Enumeration<['left', 'center', 'rigth']>;
+    publishedAt: Schema.Attribute.DateTime;
+    textColor: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiHomeHome extends Struct.CollectionTypeSchema {
   collectionName: 'homes';
   info: {
@@ -1110,6 +1149,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::author.author': ApiAuthorAuthor;
+      'api::content-banner-home.content-banner-home': ApiContentBannerHomeContentBannerHome;
       'api::home.home': ApiHomeHome;
       'api::partner-detail.partner-detail': ApiPartnerDetailPartnerDetail;
       'api::post.post': ApiPostPost;
