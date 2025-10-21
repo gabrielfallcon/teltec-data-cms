@@ -420,6 +420,7 @@ export interface ApiContentBannerHomeContentBannerHome
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    fontSize: Schema.Attribute.Integer;
     imageDesktop: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >;

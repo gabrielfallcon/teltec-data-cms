@@ -50,6 +50,9 @@
         "center",
         "rigth"
       ]
+    },
+    "fontSize": {
+      "type": "integer"
     }
   }
 }
