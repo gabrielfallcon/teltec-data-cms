@@ -578,7 +578,19 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     subtitulo: Schema.Attribute.String;
-    tipoDeServico: Schema.Attribute.Enumeration<['pms', 'cms', 'isv']>;
+    tipoDeServico: Schema.Attribute.Enumeration<
+      [
+        'infraestrutura-cloud ',
+        'gestao-de-custos-na-nuvem',
+        'pms',
+        'cms',
+        'isv',
+        'seguranca-e-governanca',
+        'dados-e-ia',
+        'ambiente-de-trabalho-moderno',
+        'inovacao-de-aplicacoes',
+      ]
+    >;
     titulo: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
