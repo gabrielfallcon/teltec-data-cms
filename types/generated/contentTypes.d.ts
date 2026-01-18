@@ -580,7 +580,7 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
     subtitulo: Schema.Attribute.String;
     tipoDeServico: Schema.Attribute.Enumeration<
       [
-        'infraestrutura-cloud ',
+        'infraestrutura-cloud',
         'gestao-de-custos-na-nuvem',
         'pms',
         'cms',
