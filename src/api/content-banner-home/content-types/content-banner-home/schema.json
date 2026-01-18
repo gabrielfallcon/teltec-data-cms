@@ -53,6 +53,9 @@
     },
     "fontSize": {
       "type": "integer"
+    },
+    "description": {
+      "type": "string"
     }
   }
 }

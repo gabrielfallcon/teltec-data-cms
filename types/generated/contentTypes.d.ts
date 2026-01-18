@@ -420,6 +420,7 @@ export interface ApiContentBannerHomeContentBannerHome
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    description: Schema.Attribute.String;
     fontSize: Schema.Attribute.Integer;
     imageDesktop: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
@@ -531,6 +532,8 @@ export interface ApiPostPost extends Struct.CollectionTypeSchema {
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::post.post'> &
       Schema.Attribute.Private;
+    metaDescription: Schema.Attribute.String;
+    metaTitle: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     readingTime: Schema.Attribute.Integer;
     richMaterialUrl: Schema.Attribute.String;
