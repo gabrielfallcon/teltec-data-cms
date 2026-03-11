@@ -120,6 +120,12 @@
     },
     "slugId": {
       "type": "uid"
+    },
+    "metaTitle": {
+      "type": "string"
+    },
+    "metaDescription": {
+      "type": "string"
     }
   }
 }
