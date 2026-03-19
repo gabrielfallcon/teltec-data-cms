@@ -154,7 +154,9 @@ function extractRelations(attributes) {
 
   console.log(attributes, "info");
   if (attributes.author?.data?.id) {
-    relations.author = attributes.author.data.id;
+    relations.author = {
+      connect: [attributes.author.id],
+    };
   }
 
   return relations;
@@ -227,13 +229,12 @@ async function processContentType(type) {
           continue;
         }
 
-        await axios.post(
-          `${STRAPI_URL}/${type}`,
+        await axios.put(
+          `${STRAPI_URL}/${type}/${entry.documentId}?locale=${locale}`,
           {
             data: {
               ...safeData,
-              locale,
-              documentId: entry.documentId,
+              // locale,
             },
           },
           { headers: HEADERS },
@@ -244,7 +245,7 @@ async function processContentType(type) {
       }
     }
   } catch (err) {
-    console.log(err, "erro");
+    console.log(err.response.data, "erro");
   }
 }
 
