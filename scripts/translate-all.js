@@ -66,19 +66,23 @@ async function translateTexts(texts, locale) {
     messages: [
       {
         role: "system",
-        content: `Translate all texts to ${lang}. Return as JSON array in same order.`,
+        content: `Translate all texts to ${lang}. Return ONLY a JSON array.`,
       },
       {
         role: "user",
         content: JSON.stringify(texts),
       },
     ],
-    response_format: { type: "json_object" },
   });
 
-  const parsed = JSON.parse(res.choices[0].message.content);
+  const content = res.choices[0].message.content;
 
-  return parsed.texts || parsed;
+  try {
+    return JSON.parse(content);
+  } catch (e) {
+    console.log("Erro ao parsear tradução:", content);
+    return texts; // fallback
+  }
 }
 
 //troca de textos
@@ -112,6 +116,7 @@ async function translateFields(entry, locale, retries = 3) {
       title: entry.title,
       summary: entry.summary,
       metaDescription: entry.metaDescription,
+      metaTitle: entry.metaTitle,
     };
 
     const res = await openai.chat.completions.create({
@@ -133,20 +138,11 @@ async function translateFields(entry, locale, retries = 3) {
   } catch (err) {
     if (retries > 0) {
       console.log("Retrying...");
-      await sleep(2000);
+      await sleep(3000);
       return translateFields(entry, locale, retries - 1);
     }
     throw err;
   }
-}
-
-// Verifica se já existe tradução para aquele idioma
-function alreadyHasLocale(entry, locale) {
-  if (!entry.localizations || !entry.localizations.data) return false;
-
-  return entry.localizations.data.some(
-    (loc) => loc.attributes.locale === locale,
-  );
 }
 
 function extractRelations(attributes) {
@@ -163,18 +159,21 @@ function extractRelations(attributes) {
 }
 
 async function processContentType(type) {
-  try {
-    console.log(`\nProcessing ${type}`);
+  console.log(`\nProcessing ${type}`);
 
-    const res = await axios.get(`${STRAPI_URL}/${type}?locale=pt&populate=*`, {
-      headers: HEADERS,
-    });
+  const res = await axios.get(`${STRAPI_URL}/${type}?locale=pt&populate=*`, {
+    headers: HEADERS,
+  });
 
-    const entries = res.data.data;
+  const entries = res.data.data;
 
-    console.log(entries, "log de inspec");
+  console.log(entries, "log de inspec");
 
-    for (const entry of entries) {
+  for (const entry of entries) {
+    try {
+      console.log("TOTAL POSTS:", entries.length);
+      let success = 0;
+      let failed = 0;
       const attributes = entry.attributes || entry;
 
       console.log(entry.id, "info id");
@@ -187,12 +186,23 @@ async function processContentType(type) {
       }
 
       for (const locale of LOCALES) {
+        console.log("POST ID:", entry.id);
+        console.log("LOCALIZATIONS:", entry.localizations);
         // 🔥 PULA se já traduzido
-        if (alreadyHasLocale(entry, locale)) {
+        // if (alreadyHasLocale(entry, locale)) {
+        //   console.log(`⏭️ Já existe ${locale}, pulando...`);
+        //   continue;
+        // }
+
+        const exists = await axios.get(
+          `${STRAPI_URL}/${type}?filters[documentId][$eq]=${entry.documentId}&filters[locale][$eq]=${locale}`,
+          { headers: HEADERS },
+        );
+
+        if (exists.data.data.length > 0) {
           console.log(`⏭️ Já existe ${locale}, pulando...`);
           continue;
         }
-
         console.log(`🌍 Traduzindo para ${locale}...`);
 
         const translated = await translateFields(attributes, locale);
@@ -216,16 +226,26 @@ async function processContentType(type) {
         const safeData = {
           title: translated.title,
           summary: translated.summary,
+          metaTitle: translated.metaTitle,
           metaDescription: translated.metaDescription,
           content: translatedContent,
+          slugId: attributes.slugId,
+          readingTime: attributes.readingTime,
+          type: attributes.type,
+          videoUrl: attributes.videoUrl,
+          richMaterialUrl: attributes.richMaterialUrl,
+          image: attributes.image?.id,
+          imageMobile: attributes.imageMobile?.id,
 
-          ...relations,
+          author: attributes.author?.documentId,
+          topic: attributes.topic?.documentId,
+          // ...relations,
         };
 
         console.log(safeData, "inspecionando");
 
-        if (!translated.title || !translatedContent) {
-          console.log("❌ Tradução inválida, pulando...");
+        if (!translated.title) {
+          console.log(translatedContent, "❌ Tradução inválida, pulando...");
           continue;
         }
 
@@ -241,11 +261,13 @@ async function processContentType(type) {
         );
 
         // evita rate limit
-        await sleep(1000);
+        await sleep(2000);
       }
+      success++;
+    } catch (err) {
+      failed++;
+      console.log(err.response.data, "erro");
     }
-  } catch (err) {
-    console.log(err.response.data, "erro");
   }
 }
 
@@ -253,8 +275,6 @@ async function run() {
   for (const type of CONTENT_TYPES) {
     await processContentType(type);
   }
-
-  console.log("\n🚀 Translation completed");
 }
 
 run();
