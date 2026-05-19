@@ -639,8 +639,18 @@ export interface ApiPostPost extends Struct.CollectionTypeSchema {
       }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::post.post'>;
-    metaDescription: Schema.Attribute.String;
-    metaTitle: Schema.Attribute.String;
+    metaDescription: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    metaTitle: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     publishedAt: Schema.Attribute.DateTime;
     readingTime: Schema.Attribute.Integer &
       Schema.Attribute.SetPluginOptions<{
